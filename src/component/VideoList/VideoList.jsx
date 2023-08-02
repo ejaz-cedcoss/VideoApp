@@ -2,7 +2,7 @@
 import Video from "../Video/Video";
 import "./videolist.css";
 
-const VideoList = ({ videos, deleteVideo, editVideo }) => {
+const VideoList = ({ videos, dispatch }) => {
   return (
     <>
       <hr />
@@ -16,8 +16,7 @@ const VideoList = ({ videos, deleteVideo, editVideo }) => {
             channel={video.channelName}
             isVerified={video.isVerified}
             id={video.id}
-            deleteVideo={deleteVideo}
-            editVideo={editVideo}
+            dispatch={dispatch}
           />
         ))}
       </div>

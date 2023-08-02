@@ -8,18 +8,18 @@ const Video = (_props) => {
     time,
     isVerified,
     id,
-    editVideo,
-    deleteVideo,
+    dispatch,
   } = _props;
   const playVideo = (titles) => console.log(`${titles} Video is playing.. `);
   const pauseVideo = (titles) => console.log(`${titles} Video has paused`);
 
   const handleDelete = (_id) => {
-    deleteVideo(_id);
+    dispatch({ type: "DELETE", payload: _id });
   };
 
   const handleEdit = (_id) => {
-    editVideo(_id);
+    console.log(_id);
+    dispatch({ type: "EDIT", payload: _id });
   };
 
   return (

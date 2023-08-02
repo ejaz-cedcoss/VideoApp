@@ -10,18 +10,23 @@ const initialVideoState = {
 };
 
 // eslint-disable-next-line react/prop-types
-const AddVideo = ({ addVideos, editableVideo, updateVideo }) => {
+const AddVideo = ({ dispatch, editableVideo }) => {
   const [newvideo, setNewvideo] = useState(initialVideoState);
 
   const submitData = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    if (editableVideo) {
-      updateVideo(newvideo);
+    const { title, views } = newvideo;
+    if (title !== "" && views !== "") {
+      if (editableVideo) {
+        dispatch({ type: "UPDATE", payload: newvideo });
+      } else {
+        dispatch({ type: "ADD", payload: newvideo });
+      }
+      setNewvideo(initialVideoState);
     } else {
-      addVideos(newvideo);
+      alert("feilds missing.....");
     }
-    setNewvideo(initialVideoState);
   };
 
   const handleChage = (e) => {
